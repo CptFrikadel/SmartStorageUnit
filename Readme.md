@@ -12,7 +12,7 @@ Multiple threads:
   * Handles the OOCSI networking and communication
 2. The pressure sensor thread
   * Constantly polls the pressure sensor for a change in weight
-  * If a weight change is detected it calls the `pressureHasChanged()` function in the main thread
+  * On change updates the `global_state` which triggers an OOCSI update.
 3. The camera / barcode reader thread
   * Keeps track of the camera and calls its `yoBarcodeWasScanned()` function in main
 
