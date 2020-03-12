@@ -24,10 +24,10 @@ Recipes are saved in json format and loaded in `Recipe` class, see `example_reci
 
 For all recipes, we follow a standard dimension for multiple types of ingrediënts:
 
-Cooking_time: time in minutes
-Liquids: amount in milliliters
-Solid items in packaging: amount in amount of products/packagings of product
-Crystallized or powdered solids like flour or sugar: milligrams
-Sauces: Tablespoons
-Solid items in large amounts like rice or pasta: grams
+* Cooking_time: time in minutes
+* * Liquids: amount in milliliters
+* Solid items in packaging: amount in amount of products/packagings of product
+* Crystallized or powdered solids like flour or sugar: milligrams
+* Sauces: Tablespoons
+* Solid items in large amounts like rice or pasta: grams
 
