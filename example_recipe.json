@@ -1,23 +1,23 @@
 {
-	"num_persons" : 12,
-	"cooking_time" : 48,
-	"recipe_text" : "One of my all-time favorite comfort food meals growing up was the beef goulash they served in my school cafeteria alongside a slice of buttered white bread and a carton of milk. Little did I know that it wasn't really goulash, but an Americanized version, invented to stretch a small amount of beef into enough food for a not-so-small family. This is one of those very simple dishes that does not taste simple--perfect for your weeknight dinner rotation.",
+	"num_persons" : 8,
+	"cooking_time" : 40,
+	"recipe_text" : "A recipe for a goulash",
 	"ingredients" : {
-		"olive oil" : 1,
-		"onion" : 1,
-		"ground beef" : 2,
+		"olive oil" : 2,
+		"onion" : 4,
+		"ground beef" : 200,
 		"garlic cloves" : 4,
 		"salt" : 2,
 		"black pepper" : 0.5,
 		"paprika" : 2,
-		"chicken broth" : 1,
+		"chicken broth" : 300,
 		"diced tomatoes" : 1,
 		"marinara sauce" : 1,
 		"water" : 200,
 		"soy sauce" : 2,
-		"macaroni" : 2,
+		"macaroni" : 500,
 		"parsley" : 0.25,
-		"cheddar cheese" : 1
+		"cheddar cheese" : 20
 	},
 	"steps" : [
 		{"text" :"Heat oil in a pot over medium-high heat. Add onion and ground beef. Cook, breaking the meat into small pieces, until browned, about 5 minutes. Cook and stir until liquid is evaporated, 3 to 5 minutes more. Add garlic, salt, black pepper, cayenne, paprika, Italian seasoning, and bay leaves.",
