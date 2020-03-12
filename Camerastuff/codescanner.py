@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+
+# Adapted from: https://www.raspberrypi.org/forums/viewtopic.php?t=225499
+
 # import the necessary packages
 from pyzbar import pyzbar
 import argparse
