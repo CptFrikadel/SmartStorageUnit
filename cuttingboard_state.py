@@ -19,13 +19,19 @@ class CuttingBoardState:
         self.weight_on_board = 0
 
     def setUserCutting(self, val):
-        pass
+        self.user_cutting = val
+
+        if val == True:
+            print('User is cutting something!')
+        elif val == False:
+            print('User stopped cutting something!')
+
 
     def setCuttingSpeed(self, val):
-        pass
+        self.cutting_speed = val
 
     def setCuttingType(self, val):
-        pass
+        self.cutting_type = val
 
     def setWeightOnBoard(self, val):
-        pass
+        self.weight_on_board = val
