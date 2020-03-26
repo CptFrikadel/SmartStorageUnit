@@ -47,6 +47,8 @@ class Recipe:
             self.cooking_time = recipe['cooking_time']
             self.recipe_text = recipe['recipe_text']
             self.steps = recipe['steps']
+
+            print("Started tracking progress on", filename.replace(".json", ""))
             
 
 

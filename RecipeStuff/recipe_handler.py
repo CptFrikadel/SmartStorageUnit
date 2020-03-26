@@ -1,3 +1,4 @@
+from .recipe import Recipe
 
 class RecipeHandler:
     """
@@ -7,17 +8,23 @@ class RecipeHandler:
 
     recipe (Recipe): The currently active recipe
     curr_step (int): The current step of the recipe the user is on
+    cut_state (CuttingBoardState): state structure of the cuttingboard
+    stor_state (StorageUnitState): state structure of the storage unit
     """
 
-    def __init__(self, recipe):
-        self.recipe = _recipe
+    def __init__(self, _recipe, _cut_state, _stor_state):
+        self.recipe = Recipe(_recipe)
+        self.cut_state = _cut_state
+        self.stor_state = _stor_state
         self.curr_step = 0
+
+        print("[Recipe step", self.curr_step, "]", self.recipe.steps[0]['text'])
 
     def startNewRecipe(self, _recipe):
         """
         Starts a new recipe 
         """
-        self.recipe = _recipe
+        self.recipe = Recipe(_recipe)
         self.curr_step = 0
 
     def updateState(self):
@@ -27,9 +34,12 @@ class RecipeHandler:
         Arguments:
         cutting (Bool): Whether or not the user is cutting something
         """
+        
+        print("Updating recipe state!")
 
         # Check whether or not the current step needs to be advanced
-        print("Updating recipe state!")
+
+
 
 
 

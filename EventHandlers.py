@@ -1,3 +1,4 @@
+import RecipeStuff
 
 class EventHandler:
     """
@@ -22,11 +23,15 @@ class EventHandler:
             
             # set user cutting in board state
             self.cutting_board_state.setUserCutting(True)
+            if self.recipe_handler is not None:
+                self.recipe_handler.updateState()
             
         elif((int(event['volume']) <= 0) and (self.cutting_board_state.user_cutting)):
             # User has stopped cutting
             # Set user_cutting back to false if this applies
             self.cutting_board_state.setUserCutting(False)
+            if self.recipe_handler is not None:
+                self.recipe_handler.updateState()
             
    #send all messages for each event
     def onSoundSpectrum(self, sender, event):
@@ -39,3 +44,10 @@ class EventHandler:
     def onCuttingSpeed(self, sender, event):
         self.cutting_board_state.setCuttingSpeed(float(event['speed']))
         print('Cutting Speed event!')
+
+    def startRecipe(self, filename):
+        
+        if self.recipe_handler is not None:
+            pass
+        else:
+            self.recipe_handler = RecipeStuff.RecipeHandler(filename, self.cutting_board_state, self.global_state)

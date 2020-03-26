@@ -37,3 +37,5 @@ listener = Listener(oocsi, receiver_channels)
 #psensor = PressureSensorThread(21, global_state)
 psensor = 0 # use for testing without RPi
 
+# Init a recipe for testing
+evt.startRecipe('example_recipe.json')
