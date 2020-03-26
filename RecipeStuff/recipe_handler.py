@@ -18,7 +18,10 @@ class RecipeHandler:
         self.stor_state = _stor_state
         self.curr_step = 0
 
-        print("[Recipe step", self.curr_step, "]", self.recipe.steps[0]['text'])
+        self.printCurrStep()
+
+    def printCurrStep(self):
+        print("[Recipe step", self.curr_step, "]", self.recipe.steps[self.curr_step]['text'])
 
     def startNewRecipe(self, _recipe):
         """
@@ -34,10 +37,12 @@ class RecipeHandler:
         Arguments:
         cutting (Bool): Whether or not the user is cutting something
         """
-        
-        print("Updating recipe state!")
 
         # Check whether or not the current step needs to be advanced
+        if self.cut_state.user_cutting == self.recipe.steps[self.curr_step + 1]['cutting']:
+            print("Next step!!")
+            self.curr_step += 1
+            self.printCurrStep()
 
 
 
