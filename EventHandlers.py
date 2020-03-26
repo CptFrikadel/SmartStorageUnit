@@ -7,12 +7,14 @@ class EventHandler:
 
     global_state (StorageUnitState): reference to the global state
     cutting_board_state (CuttingBoardState): reference to the board state
+    recipe_handler (recipeHandler): reference to the recipe handler
     
     """
 
-    def __init__(self, _global_state, _cutting_board_state):
+    def __init__(self, _global_state, _cutting_board_state, _recipe_handler):
         self.global_state = _global_state
         self.cutting_board_state = _cutting_board_state
+        self.recipe_handler = _recipe_handler
 
     def onCuttingVolume(self, sender, event):
 
