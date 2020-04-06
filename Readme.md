@@ -3,6 +3,14 @@
 Storage unit too smart for its own good..
 Connects to SmartCuttingBoard over the OOCSI network and keeps track of the progress in a recipe.
 
+# OOCSI data channels
+
+| Type	 | Channel name	 | key | range |
+| --- 	 | :---: 		 | --- | --- |
+| Value of the pressure sensor | storagePressureChannel | pressureSensorVal| Bool (0-1) |
+| Scanned barcode | barCodeChannel | scanned_barcode | EAN code of scanned products |
+| Items currently in storage | itemListChannel | item_list | - |
+
 # Software architecture
 
 Multiple threads:
