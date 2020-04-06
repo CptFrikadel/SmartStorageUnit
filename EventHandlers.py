@@ -19,19 +19,35 @@ class EventHandler:
 
     def onCuttingVolume(self, sender, event):
 
-        if ((int(event['volume']) > 0) and (not self.cutting_board_state.user_cutting)):
-            
-            # set user cutting in board state
+        #TODO this needs a delay so that the recipe tracker doesn't change steps too fast
+        #TODO implement real operation detection
+
+
+        update = False
+        if ((int(event['volume']) == 1) and (not self.cutting_board_state.user_cutting)):
+            # User started cutting
             self.cutting_board_state.setUserCutting(True)
-            if self.recipe_handler is not None:
-                self.recipe_handler.updateState()
+            update = True
             
-        elif((int(event['volume']) <= 0) and (self.cutting_board_state.user_cutting)):
+        elif((int(event['volume']) == 0) and (self.cutting_board_state.user_cutting)):
             # User has stopped cutting
-            # Set user_cutting back to false if this applies
             self.cutting_board_state.setUserCutting(False)
-            if self.recipe_handler is not None:
-                self.recipe_handler.updateState()
+            update = True
+
+        # Mock up user cooking events..
+        elif ((int(event['volume']) == 3) and (not self.cutting_board_state.user_cooking)):
+            # Pretend that 'cooking' was detected
+            self.cutting_board_state.setUserCooking(True)
+            update = True
+        
+        elif ((int(event['volume']) == 2) and (self.cutting_board_state.user_cooking)):
+            # Pretend that 'cooking' was stopped
+            self.cutting_board_state.setUserCooking(False)
+            update = True
+        
+        # Singal recipe handler that the state has changed
+        if (self.recipe_handler is not None) and update:
+            self.recipe_handler.updateState()
             
    #send all messages for each event
     def onSoundSpectrum(self, sender, event):

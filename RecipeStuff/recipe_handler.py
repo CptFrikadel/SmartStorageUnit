@@ -34,19 +34,8 @@ class RecipeHandler:
         """
         Callback to be called whenever the system state has changed. Checks whether or not the step has to be advanced or not
 
-        Arguments:
-        cutting (Bool): Whether or not the user is cutting something
         """
 
-        # Check whether or not the current step needs to be advanced
-        if self.cut_state.user_cutting == self.recipe.steps[self.curr_step + 1]['cutting']:
-            print("Next step!!")
-            self.curr_step += 1
-            self.printCurrStep()
-
-
-
-
-
-
-
+        # Keep track of which operations in the current step have been completed
+        # When all steps have been completed. Advance to next step
+        pass
