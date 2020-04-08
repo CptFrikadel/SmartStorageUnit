@@ -1,4 +1,5 @@
-from .recipe import Recipe
+from .recipe import Recipe, operations
+
 
 class RecipeHandler:
     """
@@ -10,6 +11,7 @@ class RecipeHandler:
     curr_step (int): The current step of the recipe the user is on
     cut_state (CuttingBoardState): state structure of the cuttingboard
     stor_state (StorageUnitState): state structure of the storage unit
+    step_ops (Dict): dictionary of operations (key) that need to be performed in the current step and their completion (bool)
     """
 
     def __init__(self, _recipe, _cut_state, _stor_state):
@@ -17,31 +19,38 @@ class RecipeHandler:
         self.cut_state = _cut_state
         self.stor_state = _stor_state
         self.curr_step = 0
+        self.step_ops = {} 
 
-        self.printCurrStep()
+        self.onStepChange()
 
 
     def printCurrStep(self):
         print("[Recipe step", self.curr_step, "]", self.recipe.steps[self.curr_step]['text'])
-        self.stor_state.oocsi.send('recipeChannel', {'step' : self.curr_step})
 
-    def startNewRecipe(self, _recipe):
-        """
-        Starts a new recipe 
-        """
-        self.recipe = Recipe(_recipe)
-        self.curr_step = 0
+    def onStepChange(self):
+
+        self.printCurrStep()
+        self.step_ops = {}
+
+        for op in operations:
+            # Check if operation is required and add to step_ops
+            if self.recipe.steps[self.curr_step][op]:
+                self.step_ops[op] = False
+
+        print(self.step_ops)
+
+        # Notify oocsi that the step has changed
+        self.stor_state.oocsi.send('recipeChannel', {'step' : self.curr_step})
 
 
     def nextStep(self):
         # TODO: implement recipe end..
         self.curr_step += 1
-        self.printCurrStep()
+        self.onStepChange()
 
 
     def prevStep(self):
         self.curr_step -= 1
-        self.printCurrStep()
 
 
     def updateState(self):
@@ -50,6 +59,24 @@ class RecipeHandler:
 
         """
 
-        # Keep track of which operations in the current step have been completed
-        # When all steps have been completed. Advance to next step
-        pass
+        if ('cutting' in  self.step_ops) and (self.cut_state.user_cutting):
+            self.step_ops['cutting'] = True
+            
+        if ('cooking' in self.step_ops) and (self.cut_state.user_cooking):
+            self.step_ops['cooking'] = True
+
+        # TODO: add the rest of the operations
+
+        advance = True
+
+        # Check if ALL operations are complete
+        for op in self.step_ops:
+            if self.step_ops[op] == False:
+                advance = False
+                print('User still needs to do:',op)
+                break
+
+        if advance:
+            self.nextStep()
+
+
