@@ -11,6 +11,7 @@ class RecipeHandler:
     curr_step (int): The current step of the recipe the user is on
     cut_state (CuttingBoardState): state structure of the cuttingboard
     stor_state (StorageUnitState): state structure of the storage unit
+    step_ops (Dict): dictionary of operations (key) that need to be performed in the current step and their completion (bool)
     """
 
     def __init__(self, _recipe, _cut_state, _stor_state):
@@ -64,6 +65,7 @@ class RecipeHandler:
         if ('cooking' in self.step_ops) and (self.cut_state.user_cooking):
             self.step_ops['cooking'] = True
 
+        # TODO: add the rest of the operations
 
         advance = True
 
