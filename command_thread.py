@@ -39,6 +39,14 @@ class CommandThread(threading.Thread):
 
         elif split_cmd[0] == 'scan_code':
             self.scanCode(split_cmd[1:])
+        
+        elif split_cmd[0] == 'add_scan':
+            self.scanCode(split_cmd[1])
+            self.addItem(split_cmd[2:])
+
+        elif split_cmd[0] == 'remove_scan':
+            self.scanCode(split_cmd[1])
+            self.removeItem(split_cmd[2:])
             
         elif split_cmd[0] == 'exit':
             self.shutDown()
@@ -60,14 +68,14 @@ class CommandThread(threading.Thread):
         self.storage_state.oocsi.stop()
         exit()
 
-    def scanCode(self, args):
+    def scanCode(self, arg):
 
-        if args[0] == 'def1':
+        if arg == 'def1':
             code = 5032227310339
-        elif args[0] == 'def2':
+        elif arg == 'def2':
             code = 8710434011016
         else:
-            code = args[0]
+            code = arg
 
         self.storage_state.oocsi.send('barCodeChannel', {'scanned_barcode':code})
 
