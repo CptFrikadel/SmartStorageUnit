@@ -23,7 +23,7 @@ class RecipeHandler:
 
     def printCurrStep(self):
         print("[Recipe step", self.curr_step, "]", self.recipe.steps[self.curr_step]['text'])
-
+        self.stor_state.oocsi.send('recipeChannel', {'step' : self.curr_step})
 
     def startNewRecipe(self, _recipe):
         """
@@ -34,6 +34,7 @@ class RecipeHandler:
 
 
     def nextStep(self):
+        # TODO: implement recipe end..
         self.curr_step += 1
         self.printCurrStep()
 

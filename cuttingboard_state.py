@@ -42,9 +42,13 @@ class CuttingBoardState:
     def setKitchenTimer(self, val):
         self.kitchen_timer = val
 
-
     def setCuttingSpeed(self, val):
         self.cutting_speed = val
+
+        if val > 0:
+            self.user_cutting = True
+        elif val == 0:
+            self.user_cutting = False
 
     def setCuttingType(self, val):
         self.cutting_type = val

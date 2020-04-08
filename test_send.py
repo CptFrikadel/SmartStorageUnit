@@ -7,7 +7,7 @@ if len(sys.argv) < 4:
     print("Usage:", sys.argv[0], "<channel> <message key> <message value>")
     exit()
 
-oocsi_inst = OOCSI('Testerinator', 'oocsi.id.tue.nl')
+oocsi_inst = OOCSI('Testsenderinator', 'oocsi.id.tue.nl')
 
 message = {sys.argv[2] : sys.argv[3]}
 #message['weight'] = 666
