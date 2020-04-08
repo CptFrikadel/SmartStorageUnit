@@ -1,4 +1,3 @@
-from recipe import Recipe
 
 class StorageUnitState:
     """
@@ -16,7 +15,6 @@ class StorageUnitState:
     def __init__(self, _oocsi):
         self.oocsi = _oocsi
         self.items = {}
-        self.curr_recipe = Recipe('example_recipe.json')
         self.pressure = 0
 
     def updateOOCSI(self):
