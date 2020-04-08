@@ -29,6 +29,14 @@ class RecipeHandler:
 
     def onStepChange(self):
 
+        # Clip the steps to one above the last
+        if self.curr_step >= len(self.recipe.steps):
+            self.curr_step = len(self.recipe.steps)
+            self.stor_state.oocsi.send('recipeChannel', {'done' : 1})
+            return
+        elif self.curr_step < 0:
+            self.curr_step = 0
+
         self.printCurrStep()
         self.step_ops = {}
 
@@ -36,8 +44,6 @@ class RecipeHandler:
             # Check if operation is required and add to step_ops
             if self.recipe.steps[self.curr_step][op]:
                 self.step_ops[op] = False
-
-        print(self.step_ops)
 
         # Notify oocsi that the step has changed
         self.stor_state.oocsi.send('recipeChannel', {'step' : self.curr_step})
@@ -51,6 +57,7 @@ class RecipeHandler:
 
     def prevStep(self):
         self.curr_step -= 1
+        self.onStepChange()
 
 
     def updateState(self):
@@ -73,7 +80,6 @@ class RecipeHandler:
         for op in self.step_ops:
             if self.step_ops[op] == False:
                 advance = False
-                print('User still needs to do:',op)
                 break
 
         if advance:
