@@ -22,8 +22,7 @@ class EventHandler:
         #TODO this needs a delay so that the recipe tracker doesn't change steps too fast
         #TODO implement real operation detection
 
-
-        update = False # track updated state
+        update = False
         if ((int(event['volume']) == 1) and (not self.cutting_board_state.user_cutting)):
             # User started cutting
             self.cutting_board_state.setUserCutting(True)
@@ -71,24 +70,19 @@ class EventHandler:
             - prev_step
         '''
 
-        if ('next_step' in event):  
-            print("Wollah next step")
+        if ('start_new' in event):
+            self.startRecipe('example_recipe.json')
+
+        if self.recipe_handler is None:
+            return 
+
+        elif ('next_step' in event):  
             self.recipe_handler.nextStep()
             
         elif ('prev_step' in event):
-            print("Wollah prev_step")
             self.recipe_handler.prevStep()
-
-        elif ('start_new' in event):
-            self.startRecipe('example_recipe.json')
-
-
-
 
 
     def startRecipe(self, filename):
         
-        if self.recipe_handler is not None:
-            pass
-        else:
-            self.recipe_handler = RecipeStuff.RecipeHandler(filename, self.cutting_board_state, self.global_state)
+        self.recipe_handler = RecipeStuff.RecipeHandler(filename, self.cutting_board_state, self.global_state)
