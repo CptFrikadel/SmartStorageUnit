@@ -1,5 +1,8 @@
 import json
 
+# List of possible opertaion inside a recipe
+operations = ['cutting', 'cooking', 'splatting', 'frying', 'baking' ]
+
 class Recipe: 
     """
     Class to represent a recipe  loaded from file 
