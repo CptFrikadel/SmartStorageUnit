@@ -9,12 +9,23 @@ Connects to SmartCuttingBoard over the OOCSI network and keeps track of the prog
 | --- 	 | :---: 		 | --- | --- |
 | Value of the pressure sensor | `storagePressureChannel` | `pressure_val` | Bool (0-1) |
 | Scanned barcode | `barCodeChannel` | `scanned_barcode` | EAN code of scanned products |
-| Items currently in storage | `itemListChannel` | `item_list` | - |
+| Items currently in storage | `itemListChannel` | `item_list` | python dict (list of key-value pairs) |
 | Recipe information | `recipeChannel` | `step` | integer (0 - nrof steps) |
 | Recipe finish | `recipeChannel` | `done` | value is arbitrary |
 | Recipe commands 	| `recipeChannel` | `next_step` / `prev_step` | value is ignored |	
 
 > Currently itemListChannel is a conventional oocsi channel that fires an event every time something gets added or removed. Upon request, an oocsi variable can be made available.
+
+# Commands for simulation
+
+For simulation and debugging purposes there are some commands available. Commands are followed by one or more arguments separated by spaces.
+
+| Command | Arguments | function | 
+| --- | --- | --- |
+| `add_item` | `item name` `amount` | simulates adding of one item of `name` to the storage unit |
+| `remove_item` | `item name` `amount` | same as add, but remove |
+| `scan_code` | `EAN number` or `defX` | simulates scanning barcode of a product. `defX` is a shortcut for pre-programmed codes |
+| `exit` | - | Exits..
 
 # Software architecture
 
