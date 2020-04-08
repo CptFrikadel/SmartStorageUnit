@@ -23,7 +23,7 @@ class EventHandler:
         #TODO implement real operation detection
 
 
-        update = False
+        update = False # track updated state
         if ((int(event['volume']) == 1) and (not self.cutting_board_state.user_cutting)):
             # User started cutting
             self.cutting_board_state.setUserCutting(True)
@@ -60,6 +60,31 @@ class EventHandler:
     def onCuttingSpeed(self, sender, event):
         self.cutting_board_state.setCuttingSpeed(float(event['speed']))
         print('Cutting Speed event!')
+
+    def onRecipe(self, sender, event):
+        '''
+        Handler for recipe management channel
+
+        commands available:
+            - start_new
+            - next_step
+            - prev_step
+        '''
+
+        if ('next_step' in event):  
+            print("Wollah next step")
+            self.recipe_handler.nextStep()
+            
+        elif ('prev_step' in event):
+            print("Wollah prev_step")
+            self.recipe_handler.prevStep()
+
+        elif ('start_new' in event):
+            self.startRecipe('example_recipe.json')
+
+
+
+
 
     def startRecipe(self, filename):
         

@@ -20,8 +20,10 @@ class RecipeHandler:
 
         self.printCurrStep()
 
+
     def printCurrStep(self):
         print("[Recipe step", self.curr_step, "]", self.recipe.steps[self.curr_step]['text'])
+
 
     def startNewRecipe(self, _recipe):
         """
@@ -29,6 +31,17 @@ class RecipeHandler:
         """
         self.recipe = Recipe(_recipe)
         self.curr_step = 0
+
+
+    def nextStep(self):
+        self.curr_step += 1
+        self.printCurrStep()
+
+
+    def prevStep(self):
+        self.curr_step -= 1
+        self.printCurrStep()
+
 
     def updateState(self):
         """

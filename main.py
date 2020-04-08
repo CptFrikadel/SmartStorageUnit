@@ -27,7 +27,8 @@ receiver_channels = {
         'cuttingVolumeChannel': evt.onCuttingVolume,
         'soundSpectrumChannel' : evt.onSoundSpectrum, 
         'boardWeightChannel' : evt.onBoardWeight, 
-        'cuttingSpeedChannel' : evt.onCuttingSpeed
+        'cuttingSpeedChannel' : evt.onCuttingSpeed,
+        'recipeChannel' : evt.onRecipe
         }
 
 # Start the OOCSI listener
@@ -38,4 +39,4 @@ listener = Listener(oocsi, receiver_channels)
 psensor = 0 # use for testing without RPi
 
 # Init a recipe for testing
-evt.startRecipe('example_recipe.json')
+#evt.startRecipe('example_recipe.json')
