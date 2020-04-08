@@ -7,9 +7,12 @@ Connects to SmartCuttingBoard over the OOCSI network and keeps track of the prog
 
 | Type	 | Channel name	 | key | range |
 | --- 	 | :---: 		 | --- | --- |
-| Value of the pressure sensor | storagePressureChannel | pressure_val| Bool (0-1) |
-| Scanned barcode | barCodeChannel | scanned_barcode | EAN code of scanned products |
-| Items currently in storage | itemListChannel | item_list | - |
+| Value of the pressure sensor | `storagePressureChannel` | `pressure_val` | Bool (0-1) |
+| Scanned barcode | `barCodeChannel` | `scanned_barcode` | EAN code of scanned products |
+| Items currently in storage | `itemListChannel` | `item_list` | - |
+| Recipe information | `recipeChannel` | `step` | integer (0 - nrof steps) |
+| Recipe finish | `recipeChannel` | `done` | value is arbitrary |
+| Recipe commands 	| `recipeChannel` | `next_step` / `prev_step` | value is ignored |	
 
 > Currently itemListChannel is a conventional oocsi channel that fires an event every time something gets added or removed. Upon request, an oocsi variable can be made available.
 
