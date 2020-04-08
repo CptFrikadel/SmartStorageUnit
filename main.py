@@ -8,6 +8,7 @@ from storage_state import StorageUnitState
 from cuttingboard_state import CuttingBoardState
 import time
 import RecipeStuff
+import command_thread as cmd
 
 
 
@@ -37,3 +38,10 @@ listener = Listener(oocsi, receiver_channels)
 # Start the pressure sensor thread with sensor on GPIO 21
 #psensor = PressureSensorThread(21, global_state)
 psensor = 0 # use for testing without RPi
+
+# wait for a bit for the rest to finish starting up
+time.sleep(.300)
+# Start the user command thread
+cmd_thread = cmd.CommandThread(global_state)
+
+print("\rDone initializing!")

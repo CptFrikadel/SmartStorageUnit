@@ -37,9 +37,9 @@ class PressureSensorThread:
             state = GPIO.input(self.input_pin)
 
             if ((not prev_state) and state):
-                self.global_state.addItem()
+                self.global_state.setPressure(True)
             elif ((not state) and prev_state):
-                self.global_state.removeItem()
+                self.global_state.setPressure(False)
 
             prev_state = state
 

@@ -21,12 +21,30 @@ class StorageUnitState:
         self.oocsi.send('itemListChannel', self.items)
         self.oocsi.send('storagePressureChannel', self.pressure)
 
-
-    def addItem(self):
-        self.items = {'something' : 1}
+    def setPressure(self, val):
+        self.pressure = val
         self.updateOOCSI()
 
-    def removeItem(self):
-        self.items = {}
-        self.updateOOCSI()
+    def addItem(self, name, amount):
         
+        # If item is already in inventory, add amount to inventory
+        if name in self.items:
+            self.items[name] += amount
+        else:
+            self.items[name] = amount
+
+        self.updateOOCSI()
+
+    def removeItem(self, name, amount):
+        
+        if name not in self.items:
+            return
+
+        # Check if some or all of the item is removed
+        if amount >= self.items[name]:
+            del self.items[name] 
+        else:
+            self.items[name] -= amount
+
+        self.updateOOCSI()
+    
