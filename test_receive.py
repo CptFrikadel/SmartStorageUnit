@@ -12,4 +12,5 @@ oocsi = OOCSI('Testerinator', 'oocsi.id.tue.nl')
 def printMessage(sender, recipient, event):
     print('from', sender, '->', event)
     
-oocsi.subscribe(sys.argv[1], printMessage)
+for channel in sys.argv[1:]:
+    oocsi.subscribe(channel, printMessage)
