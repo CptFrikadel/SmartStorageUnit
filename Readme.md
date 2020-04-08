@@ -25,6 +25,8 @@ For simulation and debugging purposes there are some commands available. Command
 | `add_item` | `item name` `amount` | simulates adding of one item of `name` to the storage unit |
 | `remove_item` | `item name` `amount` | same as add, but remove |
 | `scan_code` | `EAN number` or `defX` | simulates scanning barcode of a product. `defX` is a shortcut for pre-programmed codes |
+| `add_scan` | `EAN number` `name` `amount` | combines `add_item` and `scan_code` into one |
+| `remove_scan` | `EAN number` `name` `amount` | same as `add_scan`  but removing |
 | `exit` | - | Exits..
 
 # Software architecture
