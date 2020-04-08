@@ -19,7 +19,7 @@ class StorageUnitState:
 
     def updateOOCSI(self):
         self.oocsi.send('itemListChannel', self.items)
-        self.oocsi.send('storagePressureChannel', self.pressure)
+        self.oocsi.send('storagePressureChannel', {'pressure_val':self.pressure})
 
     def setPressure(self, val):
         self.pressure = val
