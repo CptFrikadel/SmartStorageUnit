@@ -50,7 +50,6 @@ class RecipeHandler:
 
 
     def nextStep(self):
-        # TODO: implement recipe end..
         self.curr_step += 1
         self.onStepChange()
 

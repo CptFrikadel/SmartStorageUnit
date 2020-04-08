@@ -24,7 +24,7 @@ class Listener:
 
     def globalEventHandler(self, sender, recipient, event):
 
-        print('[Listener]', recipient, ':', sender, '->', event)
+        #print('[Listener]', recipient, ':', sender, '->', event)
 
         # Call respective channel event handler
         self.channels[recipient](sender, event)

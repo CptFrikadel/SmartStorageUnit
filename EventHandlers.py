@@ -50,15 +50,16 @@ class EventHandler:
             
    #send all messages for each event
     def onSoundSpectrum(self, sender, event):
-        print('Sound Spectrum event!')
+        #print('Sound Spectrum event!')
+        pass
 
     def onBoardWeight(self, sender, event):
         self.cutting_board_state.setWeightOnBoard(int(event['weight']))
-        print('Board Weight event!')
+        #print('Board Weight event!')
 
     def onCuttingSpeed(self, sender, event):
         self.cutting_board_state.setCuttingSpeed(float(event['speed']))
-        print('Cutting Speed event!')
+        #print('Cutting Speed event!')
 
     def onRecipe(self, sender, event):
         '''
