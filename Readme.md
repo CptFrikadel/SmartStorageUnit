@@ -13,6 +13,7 @@ Connects to SmartCuttingBoard over the OOCSI network and keeps track of the prog
 | Recipe information | `recipeChannel` | `step` | integer (0 - nrof steps) |
 | Recipe finish | `recipeChannel` | `done` | value is arbitrary |
 | Recipe commands 	| `recipeChannel` | `next_step` / `prev_step` | value is ignored |	
+| Recipe commands	| `recipeChannel` | `start_new` | use a recipe as argument |
 
 > Currently itemListChannel is a conventional oocsi channel that fires an event every time something gets added or removed. Upon request, an oocsi variable can be made available.
 
