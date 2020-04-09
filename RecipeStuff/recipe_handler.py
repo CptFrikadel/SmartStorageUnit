@@ -48,6 +48,12 @@ class RecipeHandler:
         # Notify oocsi that the step has changed
         self.stor_state.oocsi.send('recipeChannel', {'step' : self.curr_step})
 
+        # Notify oocsi to switch heat on or off 
+        if self.recipe.steps[self.curr_step]['cooking'] == True:
+            self.stor_state.oocsi.send('recipeChannel', {'heat' : 1})
+        if self.recipe.steps[self.curr_step]['cooking'] == False:
+            self.stor_state.oocsi.send('recipeChannel', {'heat' : 0})
+
 
     def nextStep(self):
         self.curr_step += 1
