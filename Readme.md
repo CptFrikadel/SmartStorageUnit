@@ -45,9 +45,9 @@ Multiple threads:
 
 # Recipes
 
-Recipes are saved in json format and loaded in `Recipe` class, see `example_recipe.json` and `recipe.py`.Sensor data from SmartCuttingBoard (and possibly other things) is interpreted to keep track of the current step in the recipe.
+Recipes are saved in json format and loaded in `Recipe` class, see `example_recipe.json` and `recipe.py`. Sensor data from SmartCuttingBoard (and possibly other things) is interpreted to keep track of the current step in the recipe.
 
-# Dimensions of amounts
+## Dimensions of amounts
 
 For all recipes, we follow a standard dimension for multiple types of ingrediënts:
 
