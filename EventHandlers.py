@@ -48,7 +48,6 @@ class EventHandler:
         if (self.recipe_handler is not None) and update:
             self.recipe_handler.updateState()
             
-   #send all messages for each event
     def onSoundSpectrum(self, sender, event):
         #print('Sound Spectrum event!')
         pass
@@ -65,7 +64,7 @@ class EventHandler:
         '''
         Handler for recipe management channel
 
-        commands available:
+        OOCSI commands available:
             - start_new
             - next_step
             - prev_step

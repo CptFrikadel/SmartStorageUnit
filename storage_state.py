@@ -3,11 +3,12 @@ class StorageUnitState:
     """
     Class to represent the global state of the storage unit
 
+    Only use the add and set methods to modify the state! Else the OOCSI does not get updated correctly
+
     Attributes:
 
     oocsi (OOCSI): the oocsi network handle
     items (dict): Items currently stored in the unit with amounts
-    curr_recipe (Recipe): The active recipe
     pressure (int): value of the pressure sensor
 
     """
@@ -40,7 +41,7 @@ class StorageUnitState:
         if name not in self.items:
             return
 
-        # Check if some or all of the item is removed
+        # Check whether some or all of the item is removed
         if amount >= self.items[name]:
             del self.items[name] 
         else:
