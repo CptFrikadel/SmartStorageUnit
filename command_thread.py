@@ -11,19 +11,24 @@ help_string = '''
 
     Available commands are:
 
-    help                           print this help
+    help                                    print this help
 
-    exit                           stops oocsi and exits
+    exit                                    stops oocsi and exits
 
-    add_item [name] [amount]       add 'amount' items of type 'name' to the storage unit
+    add_item [name] [amount]                add 'amount' items of type 'name' 
+                                            to the storage unit
 
-    remove_item [name] [amount]    remove 'amount' of item with 'name' from the storage unit
+    remove_item [name] [amount]             remove 'amount' of item with 'name' 
+                                            from the storage unit
 
-    scan_code [EAN code]           emulate a scan of 'EAN code'
+    scan_code [EAN code]                    emulate a scan of 'EAN code' 
+                                            (use code 'def1' for cookies :)
 
-    add_scan [EAN code] [item] [amount]    Scan and add an item to the storage unit
+    add_scan [EAN code] [item] [amount]     Scan and add an item to the storage 
+                                            unit
 
-    remove_scan [EAN code] [item] [amount] Scan and remove an item from the storage unit
+    remove_scan [EAN code] [item] [amount]  Scan and remove an item from the
+                                            storage unit
 
 '''
 
@@ -103,9 +108,9 @@ class CommandThread(threading.Thread):
 
     def scanCode(self, arg):
 
-        if arg == 'def1':
+        if arg == 'def2':
             code = 5032227310339
-        elif arg == 'def2':
+        elif arg == 'def1':
             code = 8710434011016
         else:
             code = arg
