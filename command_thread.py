@@ -1,6 +1,32 @@
 import threading
 import time
 
+welcome_string = '''
+    Welcome to the Smart Storage Unit!
+    Type 'help' for a list of available commands.
+
+'''
+
+help_string = '''
+
+    Available commands are:
+
+    help                           print this help
+
+    exit                           stops oocsi and exits
+
+    add_item [name] [amount]       add 'amount' items of type 'name' to the storage unit
+
+    remove_item [name] [amount]    remove 'amount' of item with 'name' from the storage unit
+
+    scan_code [EAN code]           emulate a scan of 'EAN code'
+
+    add_scan [EAN code] [item] [amount]    Scan and add an item to the storage unit
+
+    remove_scan [EAN code] [item] [amount] Scan and remove an item from the storage unit
+
+'''
+
 class CommandThread(threading.Thread):
     '''
     Command thread class. Waits for user input, parses the command and executes
@@ -20,6 +46,8 @@ class CommandThread(threading.Thread):
         self.start()
 
     def run(self):
+
+        print(welcome_string)
         
         while True:
             cmd = input("> ")
@@ -51,6 +79,9 @@ class CommandThread(threading.Thread):
         elif split_cmd[0] == 'exit':
             self.shutDown()
 
+        elif split_cmd[0] == 'help':
+            print(help_string)
+
 
     def addItem(self, args):
         print(args)
@@ -66,6 +97,8 @@ class CommandThread(threading.Thread):
     def shutDown(self):
         
         self.storage_state.oocsi.stop()
+
+        print("Ok thanks bye!")
         exit()
 
     def scanCode(self, arg):

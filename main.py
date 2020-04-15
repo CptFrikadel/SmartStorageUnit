@@ -44,4 +44,3 @@ time.sleep(.300)
 # Start the user command thread
 cmd_thread = cmd.CommandThread(global_state)
 
-print("\rDone initializing!")
