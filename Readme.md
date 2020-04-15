@@ -37,10 +37,12 @@ Multiple threads:
 1. Main thread
   * Keeps track of the general state of the system, sensors and recipe
   * Handles the OOCSI networking and communication
-2. The pressure sensor thread
+2. Command thread
+  * Handles the user commands
+3. The pressure sensor thread
   * Constantly polls the pressure sensor for a change in weight
   * On change updates the `global_state` which triggers an OOCSI update.
-3. The camera / barcode reader thread
+4. The camera / barcode reader thread
   * Keeps track of the camera and calls its `yoBarcodeWasScanned()` function in main
 
 # Recipes
